@@ -17,7 +17,7 @@ import { JobsService } from './services/jobs.service';
             {
                 name: 'Job',
                 schema: JobSchema,
-                collection: 'user-ratings',
+                collection: 'jobs',
             },
         ]),
     ],
