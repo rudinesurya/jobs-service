@@ -16,9 +16,9 @@ export class JobsService {
             .exec();
     }
 
-    public async getJobById(jobId: string): Promise<IJob> {
+    public async getJobById(id: string): Promise<IJob> {
         return this.jobModel
-            .findOne({ _id: new Types.ObjectId(jobId) })
+            .findOne({ _id: new Types.ObjectId(id) })
             .exec();
     }
 
@@ -35,9 +35,9 @@ export class JobsService {
         }
     }
 
-    public async updateJob(jobId: string, postedById: string, updateData: IJobUpdate): Promise<IJob> {
+    public async updateJob(id: string, userId: string, updateData: IJobUpdate): Promise<IJob> {
         const updatedJob = await this.jobModel.findOneAndUpdate(
-            { _id: new Types.ObjectId(jobId), postedBy: new Types.ObjectId(postedById) },
+            { _id: new Types.ObjectId(id), postedBy: new Types.ObjectId(userId) },
             { $set: updateData },
             { new: true }
         ).exec();
@@ -49,10 +49,10 @@ export class JobsService {
         return updatedJob;
     }
 
-    public async removeJob(jobId: string, postedById: string): Promise<{ message: string }> {
+    public async removeJob(id: string, userId: string): Promise<{ message: string }> {
         const deletedJob = await this.jobModel.findOneAndDelete({
-            _id: new Types.ObjectId(jobId),
-            postedBy: new Types.ObjectId(postedById),
+            _id: new Types.ObjectId(id),
+            postedBy: new Types.ObjectId(userId),
         }).exec();
 
         if (!deletedJob) {

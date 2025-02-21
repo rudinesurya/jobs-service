@@ -29,11 +29,11 @@ export class JobsController {
     }
 
     @MessagePattern('job_get_by_id')
-    public async getJobById({ jobId }): Promise<IJobSearchResponse> {
+    public async getJobById({ id }): Promise<IJobSearchResponse> {
         let result: IJobSearchResponse;
 
-        if (jobId) {
-            const job = await this.jobsService.getJobById(jobId);
+        if (id) {
+            const job = await this.jobsService.getJobById(id);
             result = {
                 status: HttpStatus.OK,
                 message: 'jobs_get_success',
@@ -51,12 +51,12 @@ export class JobsController {
     }
 
     @MessagePattern('job_create')
-    public async createJob(jobParams: IJob): Promise<IJobCreateResponse> {
+    public async createJob(params: { createData: IJob }): Promise<IJobCreateResponse> {
         let result: IJobCreateResponse;
 
-        if (jobParams) {
+        if (params && params.createData) {
             try {
-                const job = await this.jobsService.createJob(jobParams);
+                const job = await this.jobsService.createJob(params.createData);
                 result = {
                     status: HttpStatus.CREATED,
                     message: 'job_create_success',
@@ -84,12 +84,12 @@ export class JobsController {
     }
 
     @MessagePattern('job_update')
-    public async updateJob(updateParams: { jobId: string; postedById: string; updateData: IJobUpdate }): Promise<IJobUpdateResponse> {
+    public async updateJob(params: { id: string; userId: string; updateData: IJobUpdate }): Promise<IJobUpdateResponse> {
         let result: IJobUpdateResponse;
 
-        if (updateParams && updateParams.jobId && updateParams.postedById && updateParams.updateData) {
+        if (params && params.id && params.userId && params.updateData) {
             try {
-                const job = await this.jobsService.updateJob(updateParams.jobId, updateParams.postedById, updateParams.updateData);
+                const job = await this.jobsService.updateJob(params.id, params.userId, params.updateData);
                 result = {
                     status: HttpStatus.OK,
                     message: 'job_update_success',
@@ -118,14 +118,14 @@ export class JobsController {
 
     @MessagePattern('job_delete_by_id')
     public async deleteJob(params: {
-        jobId: string;
-        postedById: string;
+        id: string;
+        userId: string;
     }): Promise<IJobDeleteResponse> {
         let result: IJobDeleteResponse;
 
-        if (params && params.jobId && params.postedById) {
+        if (params && params.id && params.userId) {
             try {
-                await this.jobsService.removeJob(params.jobId, params.postedById);
+                await this.jobsService.removeJob(params.id, params.userId);
                 result = {
                     status: HttpStatus.OK,
                     message: 'job_delete_by_id_success',
