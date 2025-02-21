@@ -7,7 +7,7 @@ export interface IJobSchema extends mongoose.Document {
     description: string;
     location: ILocation;
     salary: number;
-    postedBy: mongoose.Types.ObjectId;
+    posted_by: mongoose.Types.ObjectId;
 }
 
 export const JobSchema = new mongoose.Schema<IJobSchema>(
@@ -25,7 +25,7 @@ export const JobSchema = new mongoose.Schema<IJobSchema>(
             type: Number,
             required: true,
         },
-        postedBy: {
+        posted_by: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User', // Adjust the ref as needed
             required: true,

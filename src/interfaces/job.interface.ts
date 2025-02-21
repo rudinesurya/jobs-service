@@ -6,5 +6,5 @@ export interface IJob extends Document {
     description: string;
     location: ILocation;
     salary: number;
-    postedBy: mongoose.Types.ObjectId;
+    posted_by: mongoose.Types.ObjectId;
 }

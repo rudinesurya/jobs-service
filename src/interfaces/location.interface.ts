@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
 
 export interface ILocation extends Document {
-    formattedAddress: string;
-    placeId: string;
+    formatted_address: string;
+    place_id: string;
     lat: number;
     lng: number;
 }

@@ -37,7 +37,7 @@ export class JobsService {
 
     public async updateJob(id: string, userId: string, updateData: IJobUpdate): Promise<IJob> {
         const updatedJob = await this.jobModel.findOneAndUpdate(
-            { _id: new Types.ObjectId(id), postedBy: new Types.ObjectId(userId) },
+            { _id: new Types.ObjectId(id), posted_by: new Types.ObjectId(userId) },
             { $set: updateData },
             { new: true }
         ).exec();
@@ -52,7 +52,7 @@ export class JobsService {
     public async removeJob(id: string, userId: string): Promise<{ message: string }> {
         const deletedJob = await this.jobModel.findOneAndDelete({
             _id: new Types.ObjectId(id),
-            postedBy: new Types.ObjectId(userId),
+            posted_by: new Types.ObjectId(userId),
         }).exec();
 
         if (!deletedJob) {

@@ -1,18 +1,18 @@
 import * as mongoose from 'mongoose';
 
 export interface ILocationSchema extends mongoose.Document {
-    formattedAddress: string;
-    placeId: string;
+    formatted_address: string;
+    place_id: string;
     lat: number;
     lng: number;
 }
 
 export const LocationSchema = new mongoose.Schema<ILocationSchema>(
     {
-        formattedAddress: {
+        formatted_address: {
             type: String,
         },
-        placeId: {
+        place_id: {
             type: String,
         },
         lat: {
