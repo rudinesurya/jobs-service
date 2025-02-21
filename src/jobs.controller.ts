@@ -1,11 +1,5 @@
-import { Controller, HttpStatus, Inject } from '@nestjs/common';
-import { MessagePattern, ClientProxy } from '@nestjs/microservices';
-import { UserRatingsService } from './services/user-ratings.service';
-import { IUserRatingsSearchResponse } from './interfaces/user-ratings-search-response.interface';
-import { IUserRatingCreateResponse } from './interfaces/user-rating-create-response.interface';
-import { IUserRating } from './interfaces/user-rating.interface';
-import { IUserRatingUpdateResponse } from './interfaces/user-rating-update-response.interface';
-import { IUserRatingUpdate } from './interfaces/user-rating-update.interface';
+import { Controller, HttpStatus } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 import { JobsService } from './services/jobs.service';
 import { IJobsSearchResponse } from './interfaces/jobs-search-response.interface';
 import { IJobSearchResponse } from './interfaces/job-search-response.interface';
