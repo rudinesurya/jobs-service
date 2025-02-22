@@ -21,5 +21,15 @@ export const LocationSchema = new mongoose.Schema<ILocationSchema>(
         lng: {
             type: Number,
         },
-    }
+    },
+    {
+        toObject: {
+            virtuals: false,
+            versionKey: false,
+        },
+        toJSON: {
+            virtuals: false,
+            versionKey: false,
+        },
+    },
 );

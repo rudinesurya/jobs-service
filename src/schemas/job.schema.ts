@@ -30,5 +30,15 @@ export const JobSchema = new mongoose.Schema<IJobSchema>(
             ref: 'User', // Adjust the ref as needed
             required: true,
         },
-    }
+    },
+    {
+        toObject: {
+            virtuals: false,
+            versionKey: false,
+        },
+        toJSON: {
+            virtuals: false,
+            versionKey: false,
+        },
+    },
 );
