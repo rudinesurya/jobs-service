@@ -49,7 +49,7 @@ export class JobsService {
         return updatedJob;
     }
 
-    public async removeJob(id: string, userId: string): Promise<{ message: string }> {
+    public async removeJob(id: string, userId: string): Promise<{ system_message: string }> {
         const deletedJob = await this.jobModel.findOneAndDelete({
             _id: new Types.ObjectId(id),
             posted_by: new Types.ObjectId(userId),
@@ -59,6 +59,6 @@ export class JobsService {
             throw new NotFoundException('Job not found or you are not the owner');
         }
 
-        return { message: 'Job removed successfully' };
+        return { system_message: 'Job removed successfully' };
     }
 }

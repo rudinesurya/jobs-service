@@ -2,6 +2,6 @@ import { IJob } from "./job.interface";
 
 export interface IJobsSearchResponse {
     status: number;
-    message: string;
+    system_message: string;
     jobs: IJob[] | null;
 }

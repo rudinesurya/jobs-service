@@ -21,7 +21,7 @@ export class JobsController {
         const jobs = await this.jobsService.getJobs();
         result = {
             status: HttpStatus.OK,
-            message: 'jobs_get_success',
+            system_message: 'jobs_get_success',
             jobs: jobs,
         };
 
@@ -36,13 +36,13 @@ export class JobsController {
             const job = await this.jobsService.getJobById(id);
             result = {
                 status: HttpStatus.OK,
-                message: 'jobs_get_success',
+                system_message: 'jobs_get_success',
                 job: job,
             };
         } else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
-                message: 'jobs_get_bad_request',
+                system_message: 'jobs_get_bad_request',
                 job: null,
             };
         }
@@ -59,14 +59,14 @@ export class JobsController {
                 const job = await this.jobsService.createJob(params.createData);
                 result = {
                     status: HttpStatus.CREATED,
-                    message: 'job_create_success',
+                    system_message: 'job_create_success',
                     job: job,
                     errors: null,
                 };
             } catch (e) {
                 result = {
                     status: HttpStatus.PRECONDITION_FAILED,
-                    message: 'job_create_precondition_failed',
+                    system_message: 'job_create_precondition_failed',
                     job: null,
                     errors: e.errors,
                 };
@@ -74,7 +74,7 @@ export class JobsController {
         } else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
-                message: 'job_create_bad_request',
+                system_message: 'job_create_bad_request',
                 job: null,
                 errors: null,
             };
@@ -92,14 +92,14 @@ export class JobsController {
                 const job = await this.jobsService.updateJob(params.id, params.userId, params.updateData);
                 result = {
                     status: HttpStatus.OK,
-                    message: 'job_update_success',
+                    system_message: 'job_update_success',
                     job: job,
                     errors: null,
                 };
             } catch (e) {
                 result = {
                     status: HttpStatus.PRECONDITION_FAILED,
-                    message: 'job_update_precondition_failed',
+                    system_message: 'job_update_precondition_failed',
                     job: null,
                     errors: e.errors,
                 };
@@ -107,7 +107,7 @@ export class JobsController {
         } else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
-                message: 'job_update_bad_request',
+                system_message: 'job_update_bad_request',
                 job: null,
                 errors: null,
             };
@@ -128,14 +128,14 @@ export class JobsController {
                 await this.jobsService.removeJob(params.id, params.userId);
                 result = {
                     status: HttpStatus.OK,
-                    message: 'job_delete_by_id_success',
+                    system_message: 'job_delete_by_id_success',
                     errors: null,
                 };
 
             } catch (e) {
                 result = {
                     status: HttpStatus.PRECONDITION_FAILED,
-                    message: 'job_delete_by_id_precondition_failed',
+                    system_message: 'job_delete_by_id_precondition_failed',
                     errors: e.errors,
                 };
             }
@@ -143,7 +143,7 @@ export class JobsController {
         else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
-                message: 'job_delete_by_id_bad_request',
+                system_message: 'job_delete_by_id_bad_request',
                 errors: null,
             };
         }
