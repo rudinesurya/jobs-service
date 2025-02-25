@@ -37,14 +37,14 @@ export class JobsController {
             const job = await this.jobsService.getJobById(id);
             result = {
                 status: HttpStatus.OK,
-                system_message: 'jobs_get_success',
+                system_message: 'job_get_success',
                 job: job,
                 errors: null,
             };
         } else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
-                system_message: 'jobs_get_bad_request',
+                system_message: 'job_get_bad_request',
                 job: null,
                 errors: null,
             };
