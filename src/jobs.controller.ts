@@ -23,6 +23,7 @@ export class JobsController {
             status: HttpStatus.OK,
             system_message: 'jobs_get_success',
             jobs: jobs,
+            errors: null,
         };
 
         return result;
@@ -38,12 +39,14 @@ export class JobsController {
                 status: HttpStatus.OK,
                 system_message: 'jobs_get_success',
                 job: job,
+                errors: null,
             };
         } else {
             result = {
                 status: HttpStatus.BAD_REQUEST,
                 system_message: 'jobs_get_bad_request',
                 job: null,
+                errors: null,
             };
         }
 
