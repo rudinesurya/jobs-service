@@ -8,7 +8,7 @@ import { IJobCreateResponse } from './interfaces/job-create-response.interface';
 import { IJobUpdate } from './interfaces/job-update.interface';
 import { IJobUpdateResponse } from './interfaces/job-update-response.interface';
 import { IJobDeleteResponse } from './interfaces/job-delete-response.interface';
-import logger from './services/logger';
+import logger from '@rudinesurya/logger';
 
 @Controller('jobs')
 export class JobsController {
