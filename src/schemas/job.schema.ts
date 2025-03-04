@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-import { ILocation } from 'src/interfaces/location.interface';
 import { LocationSchema } from './location.schema';
+import { ILocation } from '@rudinesurya/jobs-service-interfaces';
 
 export interface IJobSchema extends mongoose.Document {
     title: string;
