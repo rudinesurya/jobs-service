@@ -1,14 +1,8 @@
 import { Controller, HttpStatus } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { JobsService } from './services/jobs.service';
-import { IJobsSearchResponse } from './interfaces/jobs-search-response.interface';
-import { IJobSearchResponse } from './interfaces/job-search-response.interface';
-import { IJob } from './interfaces/job.interface';
-import { IJobCreateResponse } from './interfaces/job-create-response.interface';
-import { IJobUpdate } from './interfaces/job-update.interface';
-import { IJobUpdateResponse } from './interfaces/job-update-response.interface';
-import { IJobDeleteResponse } from './interfaces/job-delete-response.interface';
 import logger from '@rudinesurya/logger';
+import { IJobsSearchResponse, IJobSearchResponse, IJob, IJobCreateResponse, IJobUpdate, IJobUpdateResponse, IJobDeleteResponse } from '@rudinesurya/jobs-service-interfaces';
 
 @Controller('jobs')
 export class JobsController {

@@ -1,8 +1,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { IJob, IJobUpdate } from '@rudinesurya/jobs-service-interfaces';
 import { FilterQuery, Model, Types } from 'mongoose';
-import { IJobUpdate } from 'src/interfaces/job-update.interface';
-import { IJob } from 'src/interfaces/job.interface';
 
 @Injectable()
 export class JobsService {
